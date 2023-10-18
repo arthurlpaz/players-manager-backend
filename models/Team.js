@@ -21,3 +21,5 @@ const Schema = new mongoose.Schema({
 Schema.methods.correctPassword = async function (candidatePasssword, userPassword) {
     return await bcrypt.compare(candidatePasssword, userPassword)
 }
+
+module.exports = mongoose.model('Team', Schema)

@@ -1,17 +1,17 @@
-const Player = require('../models/Player');
+const Team = require('../models/Team');
 
-const createPlayer = async (req, res) => {
-    const bodyData = req.body; //Pega o body da req
+const createTeam = async (req, res) => {
+    const bodyData = req.body;
 
     try {
-        const newPlayer = await Player.create(bodyData);
+        const newTeam = await Team.create(bodyData)
 
-        newPlayer.save();
+        newTeam.save();
 
         return res.status(201).json({
             status: 'Success',
             reqTime: req.requestTime,
-            message: 'Player created!'
+            message: 'Team created'
         });
     }
     catch (error) {
@@ -23,36 +23,36 @@ const createPlayer = async (req, res) => {
     }
 }
 
-const getPlayers = async (req, res) => {
+const getTeam = async (req, res) => {
     try {
-        const players = await Player.find(req.query);
+        const teams = await Team.find(req.query);
 
         return res.status(200).json({
             status: 'Success',
             reqTime: req.requestTime,
-            results: players.size,
-            players
-        });
+            results: teams.size,
+            teams
+        })
     }
     catch (error) {
         return res.status(500).json({
-            status: 'Error',
+            status: 'Success',
             reqTime: req.requestTime,
             message: error.message
         });
     }
 }
 
-const getPlayerByID = async (req, res) => {
-    const playerID = req.params.id;
+const getTeamByID = async (req, res) => {
+    const teamID = req.params.id;
 
     try {
-        const player = await Player.findById(playerID);
+        const team = await Team.findById(teamID);
 
         return res.status(200).json({
             status: 'Success',
             reqTime: req.requestTime,
-            player
+            team
         });
     }
     catch (error) {
@@ -64,21 +64,21 @@ const getPlayerByID = async (req, res) => {
     }
 }
 
-const updatePlayer = async (req, res) => {
+const updateTeam = async (req, res) => {
     const bodyData = req.body;
-    const playerID = req.params.id;
+    const matchID = req.params.id;
 
     try {
-        const updatedPlayer = await Player.findByIdAndUpdate(
-            playerID,
+        const updatedTeam = await Team.findByIdAndUpdate(
+            matchID,
             bodyData,
-            { new: true, runValidators: true}
+            {new: true, runValidators: true}
         );
 
         return res.status(200).json({
             status: 'Success',
             reqTime: req.requestTime,
-            updatedPlayer
+            updatedTeam
         });
     }
     catch (error) {
@@ -90,31 +90,31 @@ const updatePlayer = async (req, res) => {
     }
 }
 
-const deletePlayer = async (req, res) => {
-    const playerID = req.params.id;
+const deleteTeam = async (req, res) => {
+    const teamID = req.params.id;
 
     try {
-        const deletedPlayer = await Player.findByIdAndDelete(playerID);
+        const deletedTeam = await Team.findByIdAndDelete(teamID);
 
         return res.status(200).json({
             status: 'Success',
             reqTime: req.requestTime,
-            deletedPlayer
-        });
+            deletedTeam
+        })
     }
     catch (error) {
         return res.status(500).json({
             status: 'Error',
             reqTime: req.requestTime,
             message: error.message
-        })
+        });
     }
 }
 
 module.exports = {
-    createPlayer,
-    getPlayers,
-    getPlayerByID,
-    updatePlayer,
-    deletePlayer
+    createTeam,
+    getTeam,
+    getTeamByID,
+    updateTeam,
+    deleteTeam
 }
