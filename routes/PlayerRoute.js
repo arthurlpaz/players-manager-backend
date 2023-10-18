@@ -21,3 +21,5 @@ playerRoute.route('/:id')
     .get(getPlayerByID)
     .patch(updatePlayer)
     .delete(deletePlayer)
+
+module.exports = playerRoute;
