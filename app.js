@@ -2,6 +2,10 @@ require('dotenv').config()
 
 const Express = require('express')
 
+const matchRoute = require('./routes/MatchRoute');
+const teamRoute = require('./routes/TeamRoute');
+const playersRoute = require('./routes/TeamRoute')
+
 const server = new Express() //objeto do server
 
 server.use(Express.json())
@@ -16,5 +20,9 @@ server.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     next();
 })
+
+server.use('/api/v1/teams', teamRoute);
+server.use('/api/v1/players', playersRoute);
+server.use('/api/v1/matches', matchRoute);
 
 module.exports = server;

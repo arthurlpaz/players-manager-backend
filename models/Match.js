@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const Schema = new mongoose({
+const Schema = new mongoose.Schema({
     local: {
         type: String,
         required: [true, 'Local da partida não determinado']
