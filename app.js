@@ -21,6 +21,7 @@ server.use((req, res, next) => {
     next();
 })
 
+//Rotas utilizadas
 server.use('/api/v1/teams', teamRoute);
 server.use('/api/v1/players', playersRoute);
 server.use('/api/v1/matches', matchRoute);
