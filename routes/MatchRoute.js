@@ -14,7 +14,7 @@ matchRoute.route('/')
     .get(getMatch)
     .post(createMatch)
 
-matchRoute.route('/id')
+matchRoute.route('/:id')
     .get(getMatchByID)
     .patch(updateMatch)
     .delete(deleteMatch)

@@ -15,7 +15,7 @@ const Schema = new mongoose.Schema({
     },
     assists: {
         type: Number,
-        required: [true, 'Quantidade de gols visitante não informada']
+        required: [true, 'Quantidade de assistências não informada']
     },
     minutes_played: {
         type: Number,

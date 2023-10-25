@@ -14,7 +14,7 @@ TeamRoute.route('/')
     .get(getTeam)
     .post(createTeam)
 
-TeamRoute.route('/id')
+TeamRoute.route('/:id')
     .get(getTeamByID)
     .patch(updateTeam)
     .delete(deleteTeam)

@@ -4,7 +4,7 @@ const Express = require('express')
 
 const matchRoute = require('./routes/MatchRoute');
 const teamRoute = require('./routes/TeamRoute');
-const playersRoute = require('./routes/TeamRoute')
+const playersRoute = require('./routes/PlayerRoute')
 
 const server = new Express() //objeto do server
 
