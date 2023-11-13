@@ -1,6 +1,7 @@
 require('dotenv').config()
 
-const Express = require('express')
+const Express = require('express');
+const cors = require('cors');
 
 const matchRoute = require('./routes/MatchRoute');
 const teamRoute = require('./routes/TeamRoute');
@@ -15,6 +16,8 @@ if (process.env.NODE_ENV === 'development') {
     //Utilizar morgan para feedback do server
     server.use(require('morgan')('dev'))
 }
+
+server.use(cors());
 
 server.use((req, res, next) => {
     req.requestTime = new Date().toISOString();

@@ -14,7 +14,7 @@ const Schema = new mongoose.Schema({
         required: [true, 'Posição não definida']
     },
     market_value: {
-        type: Number,
+        type: String,
         required: [true, 'Valor de mercado não informado']
     },
     description: {
